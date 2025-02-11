@@ -3,7 +3,7 @@ Conversor_AD é um código implementado para cumprir com a atividade proposta no
 O código foi desenvolvido com a intenção de ser executado na ferramenta educacional BitDogLab, que possui como microcontrolador um Raspberry Pi Pico W e todos os periféricos necessários para o experimento (Joystick, pushbutton, display SSD1306 e LED RGB).
 
 Ele utiliza as bibliotecas do pico SDK e uma desenvolvida especificamente para o display citado acima, implementando o protocolo de comunicação i2c, interrupção e debouncing via software para o pressionamento dos botões, além de utilizar PWM em dois pinos.
-//-----------------------------------------------------------------------------------------------------------------------------//
+//-------------------------------------------------------------------------------------------------------------------------------//
 
 **Os requisitos implementados são**
 - Ajuste de intensidade do LED azul através da movimentação do joystick pelo eixo Y;
