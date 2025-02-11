@@ -19,6 +19,7 @@ Ele utiliza as bibliotecas do pico SDK e uma desenvolvida especificamente para o
 Para os LEDs cuja intensidade variam, utilizou-se pwm neles, sendo que seus dutycycle são definidos pelo valor que é lido a partir do potenciômetros do eixo X e Y do joystick (0 a 4095).
 Como há variações na fabricação de cada joystick, a centralização de todos nem sempre retorna 2048. Logo, na inicialização do programa, um offset de cada eixo é capturado a partir da posição inicial do joystick.
 Isso é feito para que o dutycycle subtraia o valor atualizado de cada movimentação por esses offsets, aproximando-o de 0 quando ele estiver parado (oscilações impedem valores absolutos e constantes).
+
 É **vital** que nenhuma interação seja feita com o joystick durante a inicialização, pois isso irá fazer toda leitura subsequente retornar um dutycycle errôneo.
 
 
