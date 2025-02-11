@@ -70,7 +70,7 @@ int main(){
         pwm_set_gpio_level(LED_B, abs(y - y_offset));
         printf("y = %d\n", y);
         
-        // Normalização dos valores de X e Y para ficarem dentro de ambas as bordas (6 < x < 116 && 6 < y < 56)
+        // Normalização dos valores de X e Y para ficarem dentro de ambas as bordas (8 < x < 116 && 7 < y < 56)
         x = x/39 + 8;           // 1 + 4096/(116-8) = 39
         y = (4096 - y)/91 + 7;  // 2 + 4096/(54-8) = 91
 
