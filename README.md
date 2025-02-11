@@ -3,6 +3,7 @@ Conversor_AD é um código implementado para cumprir com a atividade proposta no
 O código foi desenvolvido com a intenção de ser executado na ferramenta educacional BitDogLab, que possui como microcontrolador um Raspberry Pi Pico W e todos os periféricos necessários para o experimento (Joystick, pushbutton, display SSD1306 e LED RGB).
 
 Ele utiliza as bibliotecas do pico SDK e uma desenvolvida especificamente para o display citado acima, implementando o protocolo de comunicação i2c, interrupção e debouncing via software para o pressionamento dos botões, além de utilizar PWM em dois pinos.
+
 //-----------------------------------------------------------------------------------------------------------------------------//
 
 **Os requisitos implementados são**
@@ -12,6 +13,7 @@ Ele utiliza as bibliotecas do pico SDK e uma desenvolvida especificamente para o
 - Exibição de um quadrado 8x8 pixels no display, que se moverá conforme o movimento do joystick;
 - Alternância do estado do LED verde e das bordas do display quando o botão do joystick for pressionado;
 - Ativação ou desativação dos LEDs pwm a cada acionamento do botão A.
+
 //-----------------------------------------------------------------------------------------------------------------------------//
 
 **LEDs PWM e sua interação com o Joystick**
@@ -21,6 +23,7 @@ Como há variações na fabricação de cada joystick, a centralização de todo
 Isso é feito para que o dutycycle subtraia o valor atualizado de cada movimentação por esses offsets, aproximando-o de 0 quando ele estiver parado (oscilações impedem valores absolutos e constantes).
 
 É **vital** que nenhuma interação seja feita com o joystick durante a inicialização, pois isso irá fazer toda leitura subsequente retornar um dutycycle errôneo.
+
 //-----------------------------------------------------------------------------------------------------------------------------//
 
 **Rotina de Interrupção**
@@ -28,6 +31,7 @@ Isso é feito para que o dutycycle subtraia o valor atualizado de cada movimenta
 O pressionamento dos botões dispara uma rotina de interrupção, onde o botão A apenas ativa ou desativa os pinos pwm. **Isso não corrige o uso indevido do joystick durante a inicialização**.
 Enquanto isso, o botão do joystick prepara uma mudança nas bordas exibidas no display, porém para evitar conflito no protocolo i2c, apenas a função main atualiza o display.
 A borda interior é um retângulo que já estava presente na biblioteca ssd1306. A borda exterior é um retângulo tracejado, função implementada unicamente para este código e presente na mesma biblioteca.
+
 //-----------------------------------------------------------------------------------------------------------------------------//
 
 **Movimentação do Quadrado 8x8**
@@ -40,6 +44,7 @@ No código, há uma normalização que garante que o X e Y do quadrado nunca sai
 Sem essa inverção, ao movimentar o joystick para cima, o quadrado iria para baixo e vice-versa.
 
 A posição anterior do quadrado é sempre gravada para que, quando ele se movimentar, ela seja utilizada paga apagar a instância anterior dele, impedindo que o display seja "pintado" de branco por ele.
+
 //-----------------------------------------------------------------------------------------------------------------------------//
 
 **Vídeo Demonstrativo**
